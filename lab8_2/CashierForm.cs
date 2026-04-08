@@ -79,7 +79,8 @@ namespace lab8_2
                     ForeColor = Color.FromArgb(100, 45, 55, 72),
                     Font = new Font("Segoe UI", 12F),
                     TextAlign = ContentAlignment.MiddleCenter,
-                    Tag = menuRow.DishId
+                    Tag = menuRow.DishId,
+                    Cursor = Cursors.Hand,
                 };
                 btn.FlatAppearance.BorderSize = 1;
                 btn.Click += BtnDish_Click;
