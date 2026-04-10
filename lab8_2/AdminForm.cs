@@ -182,6 +182,18 @@ namespace lab8_2
             dgvMenu.Focus();
         }
 
+        private void btnAddDish_Click(object sender, EventArgs e)
+        {
+            var row = ds.Dishes.NewDishesRow();
+            row.Name = "Новое блюдо";
+            row.Price = 100;
+            ds.Dishes.AddDishesRow(row);
+
+            bsDishes.MoveLast();
+            dgvDishes.Focus();
+            dgvDishes.BeginEdit(true);
+        }
+
         private void btnSaveProduct_Click(object sender, EventArgs e)
         {
             Helper.SaveChanges(ds.Products, productsAdapter);
@@ -195,6 +207,11 @@ namespace lab8_2
         private void btnSaveMenu_Click(object sender, EventArgs e)
         {
             Helper.SaveChanges(ds.Menu, menuAdapter);
+        }
+
+        private void btnSaveDish_Click(object sender, EventArgs e)
+        {
+            Helper.SaveChanges(ds.Dishes, dishesAdapter);
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
@@ -253,6 +270,26 @@ namespace lab8_2
                     MessageBox.Show($"Произошла ошибка:\n{ex.Message}",
                                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ds.Menu.RejectChanges();
+                }
+            }
+        }
+
+        private void btnDeleteDish_Click(object sender, EventArgs e)
+        {
+            if (bsDishes.Current == null) return;
+            var result = MessageBox.Show("Вы уверены, что хотите удалить это блюдо?",
+                                         "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    bsDishes.RemoveCurrent();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Произошла ошибка:\n{ex.Message}",
+                                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ds.Dishes.RejectChanges();
                 }
             }
         }

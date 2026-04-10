@@ -286,6 +286,7 @@
             this.btnSaveDish.TabIndex = 6;
             this.btnSaveDish.Text = "💾 Сохранить";
             this.btnSaveDish.UseVisualStyleBackColor = false;
+            this.btnSaveDish.Click += new System.EventHandler(this.btnSaveDish_Click);
             // 
             // btnDeleteDish
             // 
@@ -300,6 +301,7 @@
             this.btnDeleteDish.TabIndex = 5;
             this.btnDeleteDish.Text = "🗑 Удалить";
             this.btnDeleteDish.UseVisualStyleBackColor = false;
+            this.btnDeleteDish.Click += new System.EventHandler(this.btnDeleteDish_Click);
             // 
             // btnAddDish
             // 
@@ -314,6 +316,7 @@
             this.btnAddDish.TabIndex = 3;
             this.btnAddDish.Text = "➕ Добавить";
             this.btnAddDish.UseVisualStyleBackColor = false;
+            this.btnAddDish.Click += new System.EventHandler(this.btnAddDish_Click);
             // 
             // tlpSearchDishes
             // 
